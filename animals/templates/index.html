@@ -6,7 +6,7 @@
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: red;">{{ message }}</li>
         {% endfor %}
     </ul>
     {% endif %}
@@ -17,6 +17,7 @@
     <input type="submit" value="submit" />
     </form>
 
+    {% if animal_list %}
     <table class="table table-striped">
         <th>Animal Name</th>
         <th>Votes</th>
@@ -29,6 +30,7 @@
         {% endfor %}
 
     </table>
+    {% endif %}
 
 
 {% endblock content %}

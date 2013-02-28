@@ -8,7 +8,7 @@ class SimpleTest(TestCase):
         This is run prior to each test.
         """
         self.animal1 = Animals.objects.create(
-            name='Badger',
+            name='Bear',
         )
 
     def test_animal_created(self):
@@ -17,4 +17,4 @@ class SimpleTest(TestCase):
         If test passes then animal objects
         can be instantiated correctly
         """
-        self.assertEquals(self.animal1.name, 'Badger')
+        self.assertEquals(self.animal1.name, 'Bear')

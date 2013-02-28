@@ -13,8 +13,21 @@ def AnimalSelection(request, template_name='index.html'):
     if form.is_valid():
         if form.cleaned_data['add_animal'] != '':
             name = form.cleaned_data['add_animal']
+            if Animals.objects.filter(name=name).exists():
+                messages.add_message(
+                    request, messages.INFO,
+                    name + ' already exists!'
+                )
+                # get animal list
+                animal_list = Animals.objects.all()
+                return render_to_response(template_name, {
+                    'title': title,
+                    'form': form,
+                    'animal_list': animal_list
+                }, RequestContext(request))
         else:
             name = form.cleaned_data['choose_animal']
+
         animal, created = Animals.objects.get_or_create(
             name=name,
         )
